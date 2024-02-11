@@ -1,0 +1,43 @@
+{% extends 'news/base.html' %}
+{% load static %}
+
+{% block title %} O'zbekiston yangiliklari {% endblock title %}
+{% block content %}
+    <div class="row">
+      <div class="col-lg-8 col-md-8 col-sm-8">
+          <div class="single_post_content">
+            <h2><span>O'zbekiston yangiliklari</span></h2>
+            <div class="single_post_content_left">
+              <ul class="business_catgnav  wow fadeInDown">
+                {% for one in localnews %}
+                {% if forloop.first %}
+                <li>
+                  <figure class="bsbig_fig"> <a href="{{ one.get_title_url }}" class="featured_img"> <img alt="" src="{{ one.image.url }} "> <span class="overlay"></span> </a>
+                    <figcaption> <a href="{{ one.get_title_url }}">{{ one.title }}</a> </figcaption>
+                    <p> {{ one.body | truncatewords:20  }}</p>
+                  </figure>
+                </li>
+                {% endif %}
+                {% endfor %}
+              </ul>
+            </div>
+            <div class="single_post_content_right">
+              <ul class="spost_nav">
+                {% for local in localnews %}
+                {% if forloop.counter > 1 %}
+                <li>
+                  <div class="media wow fadeInDown"> <a href="{{ local.get_title_url }}" class="media-left"> <img alt="" src="{{ local.image.url }}"> </a>
+                    <div class="media-body"> <a href="{{ local.get_title_url }}" class="catg_title">{{ local.title }}</a> </div>
+                  </div>
+                </li>
+                {% endif %}
+                {% endfor %}
+              </ul>
+            </div>
+          </div>
+      </div>
+    </div>
+
+
+
+{% endblock content %}
