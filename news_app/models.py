@@ -48,7 +48,6 @@ class News(models.Model):
         return reverse("news_detail_page", args=[self.slug])
 
 
-
 class Contact(models.Model):
     name = models.CharField(max_length=150)
     email = models.EmailField(max_length=100)
@@ -56,6 +55,5 @@ class Contact(models.Model):
 
     def __str__(self):
         return self.email
-
 
 
